@@ -11,7 +11,7 @@
               <el-tag>用户名</el-tag>
             </td>
             <td colspan="2">
-              <el-input v-model="user.username" @blur="drawPic"></el-input>
+              <el-input v-model="user.username" v-on:input.blur ="drawPic"></el-input>
             </td>
           </tr>
           <tr>

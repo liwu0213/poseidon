@@ -1,7 +1,6 @@
 <template>
 <div id="home">
-  {{test}}
-  ssssssssssssssssssssssssssssssss
+  <h1>没错，这是一个首页</h1>
 </div>
 </template>
 

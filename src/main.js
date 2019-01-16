@@ -8,9 +8,11 @@ import './assets/theme/element/index.css'
 import VueResource from 'vue-resource'
 import {getRequest} from './utils/api'
 import {postRequest} from './utils/api'
+import {postRequestParm} from './utils/api'
 
 Vue.prototype.getRequest = getRequest
 Vue.prototype.postRequest = postRequest
+Vue.prototype.postRequestParm = postRequestParm
 Vue.config.productionTip = false
 Vue.use(VueResource)
 Vue.use(ElementUI, {size: 'mini', zIndex: 3000})

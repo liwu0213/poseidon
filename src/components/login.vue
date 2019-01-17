@@ -30,7 +30,7 @@
               <el-input v-model="user.verification"></el-input>
             </td>
             <td>
-              <canvas id="canvas" width="80" height="30px" @click="drawPic" @onload="drawPic"></canvas>
+              <canvas id="canvas" width="80" height="30px" @click="drawPic" ></canvas>
             </td>
           </tr>
           <tr>

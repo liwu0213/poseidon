@@ -1,7 +1,7 @@
 <template>
   <div id="login">
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
+    <el-card class="box-card" v-if="temp1&&temp2">
+      <div slot="header" class="clearfix" >
         <span>登录</span>
       </div>
       <div>
@@ -35,18 +35,19 @@
           </tr>
           <tr>
             <td colspan="3">
-              <el-button style="width: 80px; margin-top: 15px" type="primary">注册</el-button>
               <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login">登录</el-button>
             </td>
           </tr>
         </table>
+        <div style="margin: 20px 0px">-----------其他登录方式-----------</div>
       </div>
+      <img src="../../static/timg.jpg" height="50px" width="60px"  @click="table(1)"/>
+      <img src="../../static/timg (1).jpg" height="50px"width="50px" @click="table(2)"/>
+      <img src="../../static/timg (2).jpg" height="50px" width="50px" @click="table(3)"/>
     </el-card>
-    <div style="margin-top: 20px">
-      <a href="http://www.baidu.com" style="color: coral;text-decoration : none;font-family: KaiTi;font-size: 20px">手机号登录
-        &nbsp;</a>
-      <a href="http://www.baidu.com" style="color: coral;text-decoration : none;font-family: KaiTi;font-size: 20px">&nbsp;邮箱登录</a>
-    </div>
+    <div v-if="!temp1&&temp2">qq</div>
+    <div v-if="temp1&&!temp2">sj</div>
+    <div v-if="!temp1&&!temp2">yx</div>
   </div>
 </template>
 
@@ -59,7 +60,9 @@ export default {
         username: null,
         password: null,
         verification: null
-      }
+      },
+      temp1: true,
+      temp2: true
     }
   },
   /* mounted: function () {
@@ -153,6 +156,24 @@ export default {
         }
         return value// 返回随机数字符串
       })
+    },
+    table(a){
+      alert(a)
+      switch (a)
+      {
+        case 1:
+          this.temp1=false;
+          this.temp1=true;
+          break;
+        case 2:
+          this.temp1=true;
+          this.temp1=false;
+          break;
+        default:
+          this.temp1=false;
+          this.temp1=false;
+      }
+
     }
   }
 }

@@ -7,7 +7,7 @@
       <el-col :span="3"><div v-bind:class="myStyleD" style="line-height: 38px" @mouseenter="goLoginD" @mouseleave="gllD">资 源 共 享</div></el-col>
       <el-col :span="3"><div v-bind:class="myStyleE" style="line-height: 38px" @mouseenter="goLoginE" @mouseleave="gllE">操 作 台</div></el-col>
       <el-col :span="1"><div v-bind:class="myStyleF" style="line-height: 38px" @mouseenter="goLoginF" @mouseleave="gllF" @click="login">登 陆</div></el-col>
-      <el-col :span="1"><div v-bind:class="myStyleG" style="line-height: 38px" @mouseenter="goLoginG" @mouseleave="gllG">注 册</div></el-col>
+      <el-col :span="1"><div v-bind:class="myStyleG" style="line-height: 38px" @mouseenter="goLoginG" @mouseleave="gllG" @click="signUp">注 册</div></el-col>
       <el-col :span="1"><div v-bind:class="myStyleH" style="line-height: 38px" @mouseenter="goLoginH" @mouseleave="gllH">留言(0)</div></el-col>
     </el-row>
     <router-view/>
@@ -83,6 +83,9 @@ export default {
     },
     login(){
       this.$router.push('/login')
+    },
+    signUp(){
+      this.$router.push('/sign_up')
     }
   }
 }

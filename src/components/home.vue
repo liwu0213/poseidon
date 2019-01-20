@@ -1,5 +1,5 @@
 <template>
-  <div id="a">
+  <div id="home">
     <h1
       style="background-image: url('../../static/test1.png' );height: 500px;padding-top: 300px;color: white; margin: 0px">
       泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI</h1>

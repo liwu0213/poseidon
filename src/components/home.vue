@@ -2,7 +2,7 @@
   <div id="a">
     <h1
       style="background-image: url('../../static/test1.png' );height: 500px;padding-top: 300px;color: white; margin: 0px">
-      泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看。</h1>
+      泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI</h1>
     <h1
       style="background-image: url('../../static/timg3.jpg' );height: 500px;padding-top: 300px;color: black; margin: 0px">
       网站功能:<br>1.电商项目试验与展示<br>2.盖楼、留言<br>3.博客、文章分享<br>4、资源分享</h1>

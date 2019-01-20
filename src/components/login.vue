@@ -1,7 +1,7 @@
 <template>
   <div id="login">
-    <el-card class="box-card" v-if="temp1&&temp2">
-      <div slot="header" class="clearfix" >
+    <el-card class="box-card" v-show="test==0">
+      <div slot="header" class="clearfix">
         <span>登录</span>
       </div>
       <div>
@@ -11,7 +11,7 @@
               <el-tag>用户名</el-tag>
             </td>
             <td colspan="2">
-              <el-input v-model="user.username" @blur ="drawPic"></el-input>
+              <el-input v-model="user.username" @blur="drawPic"></el-input>
             </td>
           </tr>
           <tr>
@@ -30,69 +30,166 @@
               <el-input v-model="user.verification"></el-input>
             </td>
             <td>
-              <canvas id="canvas" width="80" height="30px" @click="drawPic" ></canvas>
+              <canvas id="canvas" width="80" height="30px" @click="drawPic"></canvas>
             </td>
           </tr>
           <tr>
             <td colspan="3">
-              <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login">登录</el-button>
+              <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(0)">登录</el-button>
             </td>
           </tr>
         </table>
         <div style="margin: 20px 0px">-----------其他登录方式-----------</div>
       </div>
-      <img src="../../static/timg.jpg" height="50px" width="60px"  @click="table(1)"/>
-      <img src="../../static/timg (1).jpg" height="50px"width="50px" @click="table(2)"/>
+      <img src="../../static/timg.jpg" height="50px" width="60px" @click="table(1)"/>
+      <img src="../../static/timg (1).jpg" height="50px" width="50px" @click="table(2)"/>
       <img src="../../static/timg (2).jpg" height="50px" width="50px" @click="table(3)"/>
     </el-card>
-    <div v-if="!temp1&&temp2">qq</div>
-    <div v-if="temp1&&!temp2">sj</div>
-    <div v-if="!temp1&&!temp2">yx</div>
+    <div v-show="test==1">
+      <el-card class="box-card" >
+        <div slot="header" class="clearfix">
+          <span>扣扣登录</span>
+        </div>
+      </el-card>
+    </div>
+    <div v-show="test==2">
+      <el-card class="box-card" >
+        <div slot="header" class="clearfix">
+          <span>手机号登录</span>
+        </div>
+        <div>
+          <table>
+            <tr>
+              <td>
+                <el-tag>手机号</el-tag>
+              </td>
+              <td colspan="2">
+                <el-input v-model="user.username" ></el-input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <el-tag>验证码</el-tag>
+              </td>
+              <td>
+                <el-input v-model="user.verification"></el-input>
+              </td>
+              <td>
+                <el-button style="width: 80px; " type="primary" @click="getValidator(1)">发送验证码</el-button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(1)">登录</el-button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </el-card>
+    </div>
+    <div v-show="test==3"> <el-card class="box-card" >
+      <div slot="header" class="clearfix">
+        <span>邮箱登录</span>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <td>
+              <el-tag>邮箱</el-tag>
+            </td>
+            <td colspan="2">
+              <el-input v-model="user.username" ></el-input>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <el-tag>验证码</el-tag>
+            </td>
+            <td>
+              <el-input v-model="user.verification"></el-input>
+            </td>
+            <td>
+              <el-button style="width: 80px; " type="primary" @click="getValidator(3)">发送验证码</el-button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(1)">登录</el-button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </el-card></div>
   </div>
 </template>
 
 <script>/* eslint-disable indent */
 export default {
   name: 'login',
-  data () {
+  data() {
     return {
       user: {
         username: null,
         password: null,
         verification: null
       },
-      temp1: true,
-      temp2: true
+      test: 0
     }
   },
   /* mounted: function () {
     this.drawPic()
   }, */
   methods: {
-    login: function () {
-      if (this.user.username === null) {
-        alert('请输入用户名')
-        return
-      } else if (this.user.password === null) {
-        alert('请输入密码')
-        return
-      } else if (this.user.verification === null) {
-        alert('请输入验证码')
-        return
+    login: function (value) {
+      switch (value){
+        case 0:
+          if (this.user.username === null||this.user.username === '') {
+            alert('请输入用户名')
+            return
+          } else if (this.user.password === null) {
+            alert('请输入密码')
+            return
+          } else if (this.user.verification === null) {
+            alert('请输入验证码')
+            return
+          }
+          this.postRequestParm('/sign_in', {
+            username: this.user.username,
+            password: this.user.password,
+            verification: this.user.verification
+          }).then(res => {
+            if (res.data.code === '200') {
+              this.$router.push('/')
+            } else {
+              alert(res.data.msg)
+            }
+            /* var obj = JSON.parse(data1)
+            console.log(obj.code) */
+          })
+              break;
+        case 1:
+          if (this.user.username === null||this.user.username === '') {
+            alert('请输入用户名')
+            return
+          }
+          this.postRequestParm('/sign_in', {
+            username: this.user.username,
+            isMessage: 'email',
+            verification: this.user.verification
+          }).then(res => {
+            if (res.data.code === '200') {
+              this.$router.push('/')
+            } else if(res.data.code === '401') {
+              alert('该邮箱未绑定账号，请使用账号登录')
+              return;
+            }else {
+              alert(res.data.msg)
+            }
+            /* var obj = JSON.parse(data1)
+            console.log(obj.code) */
+          })
       }
-      this.postRequestParm('/sign_in', {
-        username: this.user.username,
-        password: this.user.password,
-        verification: this.user.verification
-      }).then(res => {
-        if (res.data.code === '200') {
-          this.$router.push('/')
-        } else {
-          alert(res.data.msg)
-        }
-        /* var obj = JSON.parse(data1)
-        console.log(obj.code) */
-      })
+
     },
     randomNum: function (min, max) {
       return Math.floor(Math.random() * (max - min) + min)
@@ -157,23 +254,39 @@ export default {
         return value// 返回随机数字符串
       })
     },
-    table(a){
-      alert(a)
-      switch (a)
-      {
-        case 1:
-          this.temp1=false;
-          this.temp1=true;
-          break;
-        case 2:
-          this.temp1=true;
-          this.temp1=false;
-          break;
-        default:
-          this.temp1=false;
-          this.temp1=false;
+    table(a) {
+      this.test = a
+    },
+    getValidator(value){
+      if(value===1){
+        alert('发短信要钱的，不做这个功能')
       }
-
+      if (value===2){
+        this.postRequest('/public/verification', {
+          phone: this.user.username,
+          code: value
+        })
+      }
+      if (value===3){
+        if(this.user.username ===null||this.user.username ===''){
+          alert('请输入邮箱')
+          return;
+        }
+        var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+        if(!reg.test(this.user.username)){
+          alert("邮箱格式错误！")
+          return;
+        }
+        this.postRequest('/public/verification', {
+          email: this.user.username,
+          code: value
+        }).then(res => {
+          if (res.data.code!='200'){
+            alert(res.data.msg)
+            return;
+          }
+        })
+      }
     }
   }
 }

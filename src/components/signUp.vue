@@ -25,7 +25,7 @@
           <el-tag>昵称</el-tag>
         </td>
         <td colspan="2">
-          <el-input></el-input>
+          <el-input v-model="user.nickname" ></el-input>
         </td>
       </tr>
       <tr>
@@ -33,7 +33,7 @@
           <el-tag>邮箱</el-tag>
         </td>
         <td colspan="2">
-          <el-input type="email" v-model="user.password" placeholder="请输入密码"></el-input>
+          <el-input v-model="user.email" ></el-input>
         </td>
       </tr>
       <tr>
@@ -41,7 +41,7 @@
           <el-tag>手机</el-tag>
         </td>
         <td colspan="2">
-          <el-input></el-input>
+          <el-input v-model="user.phone" ></el-input>
         </td>
       </tr>
       <tr>
@@ -144,10 +144,30 @@ export default {
       })
     },
     sign () {
-      var reg = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$')
-      if (this.user.email != null && !reg.test(this.user.username)) {
-        alert('邮箱格式错误！')
+      if (this.user.username===null||this.user.password===null||this.user.nickname===null){
+        alert('请填写必填字段')
+        return
       }
+      var reg = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$')
+      if (this.user.email != null && !reg.test(this.user.email)) {
+        alert('邮箱格式错误！')
+        return;
+      }
+      this.postRequest('/sign_up?verification='+this.user.verification, {
+        username: this.user.username,
+        email: this.user.email,
+        nickname: this.user.nickname,
+        password: this.user.password,
+        gender: this.user.gender
+      }).then(res => {
+        if (res.data.code === '200') {
+          this.$router.push('/')
+        } else {
+          alert(res.data.msg)
+        }
+        /* var obj = JSON.parse(data1)
+        console.log(obj.code) */
+      })
     }
   }
 }

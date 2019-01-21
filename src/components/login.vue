@@ -42,13 +42,17 @@
         <div style="margin: 20px 0px">-----------其他登录方式-----------</div>
       </div>
       <img src="../../static/timg.jpg" height="50px" width="60px" @click="table(1)"/>
-      <img src="../../static/timg (1).jpg" height="50px" width="50px" @click="table(2)"/>
-      <img src="../../static/timg (2).jpg" height="50px" width="50px" @click="table(3)"/>
+      <img src="../../static/timg (2).jpg" height="50px" width="50px" @click="table(2)"/>
+      <img src="../../static/timg (1).jpg" height="50px" width="50px" @click="table(3)"/>
     </el-card>
     <div v-show="test==1">
       <el-card class="box-card" >
         <div slot="header" class="clearfix">
           <span>扣扣登录</span>
+        </div>
+        <div>
+          qq登录未申请到开发者权限
+          敬请期待
         </div>
       </el-card>
     </div>

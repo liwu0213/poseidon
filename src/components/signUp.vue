@@ -1,67 +1,72 @@
 <template>
-  <el-card class="box-card" style="margin: auto">
-    <div slot="header" class="clearfix">
-      <span>注册</span>
+  <div>
+    <el-card class="box-card" style="margin: auto" v-show="test==0">
+      <div slot="header" class="clearfix">
+        <span>注册</span>
+      </div>
+      <table>
+        <tr>
+          <td>
+            <el-tag>用户名</el-tag>
+          </td>
+          <td colspan="2">
+            <el-input v-model="user.username" @blur="drawPic"></el-input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <el-tag>密码</el-tag>
+          </td>
+          <td colspan="2">
+            <el-input type="password" v-model="user.password" placeholder="请输入密码"></el-input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <el-tag>昵称</el-tag>
+          </td>
+          <td colspan="2">
+            <el-input v-model="user.nickname"></el-input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <el-tag>邮箱</el-tag>
+          </td>
+          <td colspan="2">
+            <el-input v-model="user.email"></el-input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <el-tag>手机</el-tag>
+          </td>
+          <td colspan="2">
+            <el-input v-model="user.phone"></el-input>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <el-tag>验证码</el-tag>
+          </td>
+          <td>
+            <el-input v-model="user.verification"></el-input>
+          </td>
+          <td>
+            <canvas id="canvas" width="80" height="30px" @click="drawPic"></canvas>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <el-button style="width: 80px; margin-top: 15px" type="primary" @click="sign">注册</el-button>
+          </td>
+        </tr>
+      </table>
+    </el-card>
+    <div v-show="test==1">
+      用户信息
     </div>
-    <table>
-      <tr>
-        <td>
-          <el-tag>用户名</el-tag>
-        </td>
-        <td colspan="2">
-          <el-input v-model="user.username" @blur="drawPic"></el-input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <el-tag>密码</el-tag>
-        </td>
-        <td colspan="2">
-          <el-input type="password" v-model="user.password" placeholder="请输入密码"></el-input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <el-tag>昵称</el-tag>
-        </td>
-        <td colspan="2">
-          <el-input v-model="user.nickname" ></el-input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <el-tag>邮箱</el-tag>
-        </td>
-        <td colspan="2">
-          <el-input v-model="user.email" ></el-input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <el-tag>手机</el-tag>
-        </td>
-        <td colspan="2">
-          <el-input v-model="user.phone" ></el-input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <el-tag>验证码</el-tag>
-        </td>
-        <td>
-          <el-input v-model="user.verification"></el-input>
-        </td>
-        <td>
-          <canvas id="canvas" width="80" height="30px" @click="drawPic"></canvas>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <el-button style="width: 80px; margin-top: 15px" type="primary" @click="sign">注册</el-button>
-        </td>
-      </tr>
-    </table>
-  </el-card>
+  </div>
 </template>
 
 <script>/* eslint-disable indent */
@@ -76,7 +81,8 @@ export default {
         nickname: null,
         password: null,
         gender: null
-      }
+      },
+      test: 0
     }
   },
   methods: {
@@ -144,16 +150,16 @@ export default {
       })
     },
     sign () {
-      if (this.user.username===null||this.user.password===null||this.user.nickname===null){
+      if (this.user.username === null || this.user.password === null || this.user.nickname === null) {
         alert('请填写必填字段')
         return
       }
       var reg = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$')
-      if (this.user.email != null && !reg.test(this.user.email)) {
+      if (this.user.email != '' && this.user.email != null && !reg.test(this.user.email)) {
         alert('邮箱格式错误！')
-        return;
+        return
       }
-      this.postRequest('/sign_up?verification='+this.user.verification, {
+      this.postRequest('/sign_up?verification=' + this.user.verification, {
         username: this.user.username,
         email: this.user.email,
         nickname: this.user.nickname,
@@ -161,7 +167,7 @@ export default {
         gender: this.user.gender
       }).then(res => {
         if (res.data.code === '200') {
-          this.$router.push('/')
+          this.test = 1
         } else {
           alert(res.data.msg)
         }

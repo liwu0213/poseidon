@@ -42,8 +42,8 @@
         <div style="margin: 20px 0px">-----------其他登录方式-----------</div>
       </div>
       <img src="../../static/timg.jpg" height="50px" width="60px" @click="table(1)"/>
-      <img src="../../static/timg (2).jpg" height="50px" width="50px" @click="table(2)"/>
-      <img src="../../static/timg (1).jpg" height="50px" width="50px" @click="table(3)"/>
+      <img src="../../static/timg (1).jpg" height="50px" width="50px" @click="table(2)"/>
+      <img src="../../static/timg (2).jpg" height="50px" width="50px" @click="table(3)"/>
     </el-card>
     <div v-show="test==1">
       <el-card class="box-card" >
@@ -130,7 +130,7 @@
 <script>/* eslint-disable indent */
 export default {
   name: 'login',
-  data() {
+  data () {
     return {
       user: {
         username: null,
@@ -145,9 +145,9 @@ export default {
   }, */
   methods: {
     login: function (value) {
-      switch (value){
+      switch (value) {
         case 0:
-          if (this.user.username === null||this.user.username === '') {
+          if (this.user.username === null || this.user.username === '') {
             alert('请输入用户名')
             return
           } else if (this.user.password === null) {
@@ -163,6 +163,7 @@ export default {
             verification: this.user.verification
           }).then(res => {
             if (res.data.code === '200') {
+              this.test1 = 2
               this.$router.push('/')
             } else {
               alert(res.data.msg)
@@ -170,9 +171,9 @@ export default {
             /* var obj = JSON.parse(data1)
             console.log(obj.code) */
           })
-              break;
+              break
         case 1:
-          if (this.user.username === null||this.user.username === '') {
+          if (this.user.username === null || this.user.username === '') {
             alert('请输入用户名')
             return
           }
@@ -183,17 +184,15 @@ export default {
           }).then(res => {
             if (res.data.code === '200') {
               this.$router.push('/')
-            } else if(res.data.code === '401') {
+            } else if (res.data.code === '401') {
               alert('该邮箱未绑定账号，请使用账号登录')
-              return;
-            }else {
+            } else {
               alert(res.data.msg)
             }
             /* var obj = JSON.parse(data1)
             console.log(obj.code) */
           })
       }
-
     },
     randomNum: function (min, max) {
       return Math.floor(Math.random() * (max - min) + min)
@@ -258,36 +257,35 @@ export default {
         return value// 返回随机数字符串
       })
     },
-    table(a) {
+    table (a) {
       this.test = a
     },
-    getValidator(value){
-      if(value===1){
+    getValidator (value) {
+      if (value === 1) {
         alert('发短信要钱的，不做这个功能')
       }
-      if (value===2){
+      if (value === 2) {
         this.postRequest('/public/verification', {
           phone: this.user.username,
           code: value
         })
       }
-      if (value===3){
-        if(this.user.username ===null||this.user.username ===''){
+      if (value === 3) {
+        if (this.user.username === null || this.user.username === '') {
           alert('请输入邮箱')
-          return;
+          return
         }
-        var reg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
-        if(!reg.test(this.user.username)){
-          alert("邮箱格式错误！")
-          return;
+        var reg = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$')
+        if (!reg.test(this.user.username)) {
+          alert('邮箱格式错误！')
+          return
         }
         this.postRequest('/public/verification', {
           email: this.user.username,
           code: value
         }).then(res => {
-          if (res.data.code!='200'){
+          if (res.data.code != '200') {
             alert(res.data.msg)
-            return;
           }
         })
       }

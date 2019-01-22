@@ -6,7 +6,7 @@
       <el-col :span="3"><div v-bind:class="myStyleC" style="line-height: 38px" @mouseenter="goLoginC" @mouseleave="gllC">博 客</div></el-col>
       <el-col :span="3"><div v-bind:class="myStyleD" style="line-height: 38px" @mouseenter="goLoginD" @mouseleave="gllD">资 源 共 享</div></el-col>
       <el-col :span="3"><div v-bind:class="myStyleE" style="line-height: 38px" @mouseenter="goLoginE" @mouseleave="gllE">操 作 台</div></el-col>
-      <el-col :span="1"><div v-bind:class="myStyleF" style="line-height: 38px" @mouseenter="goLoginF" @mouseleave="gllF" @click="login">登 陆</div></el-col>
+      <el-col :span="1"><div v-bind:class="myStyleF" style="line-height: 38px" @mouseenter="goLoginF" @mouseleave="gllF" @click="login">{{test1}}</div></el-col>
       <el-col :span="1"><div v-bind:class="myStyleG" style="line-height: 38px" @mouseenter="goLoginG" @mouseleave="gllG" @click="signUp">注 册</div></el-col>
       <el-col :span="1"><div v-bind:class="myStyleH" style="line-height: 38px" @mouseenter="goLoginH" @mouseleave="gllH">留言(0)</div></el-col>
     </el-row>
@@ -17,7 +17,7 @@
 <script>/* eslint-disable indent */
 export default {
   name: 'App',
-  data () {
+  data: function () {
     return {
       myStyleA: 'grid-content bg-purple',
       myStyleB: 'grid-content bg-purple',
@@ -28,7 +28,8 @@ export default {
       myStyleG: 'grid-content bg-purple',
       myStyleH: 'grid-content bg-purple',
       myStyleI: 'grid-content bg-purple',
-      myStyleJ: 'grid-content bg-purple'
+      myStyleJ: 'grid-content bg-purple',
+      test1: 0
     }
   },
   components: {},

@@ -1,6 +1,7 @@
-<template>
-  <div id="login">
-    <el-card class="box-card" v-show="test==0">
+<template >
+  <div id="login" style="background-image: url('../../static/background_login.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}; position: absolute;">
+    <div style="height: 200px"></div>
+    <el-card class="box-card" v-show="test==0" style="width: 300px;margin:auto">
       <div slot="header" class="clearfix">
         <span>登录</span>
       </div>
@@ -39,13 +40,13 @@
             </td>
           </tr>
         </table>
-        <div style="margin: 20px 0px">-----------其他登录方式-----------</div>
+        <div style="margin: 20px 0px;font-size: 15px;font-family: kaiti">-----------其他登录方式-----------</div>
       </div>
       <img src="../../static/timg.jpg" height="50px" width="60px" @click="table(1)"/>
       <img src="../../static/timg (1).jpg" height="50px" width="50px" @click="table(2)"/>
       <img src="../../static/timg (2).jpg" height="50px" width="50px" @click="table(3)"/>
     </el-card>
-    <div v-show="test==1">
+    <div v-show="test==1"  style="width: 300px;margin:auto">
       <el-card class="box-card" >
         <div slot="header" class="clearfix">
           <span>扣扣登录</span>
@@ -56,7 +57,7 @@
         </div>
       </el-card>
     </div>
-    <div v-show="test==2">
+    <div v-show="test==2"  style="width: 300px;margin:auto">
       <el-card class="box-card" >
         <div slot="header" class="clearfix">
           <span>手机号登录</span>
@@ -84,14 +85,15 @@
             </tr>
             <tr>
               <td colspan="3">
-                <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(1)">登录</el-button>
+                <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(2)">登录</el-button>
               </td>
             </tr>
           </table>
         </div>
       </el-card>
     </div>
-    <div v-show="test==3"> <el-card class="box-card" >
+    <div v-show="test==3">
+      <el-card class="box-card"  style="width: 300px;margin:auto">
       <div slot="header" class="clearfix">
         <span>邮箱登录</span>
       </div>
@@ -123,7 +125,8 @@
           </tr>
         </table>
       </div>
-    </el-card></div>
+    </el-card>
+    </div>
   </div>
 </template>
 
@@ -164,6 +167,7 @@ export default {
           }).then(res => {
             if (res.data.code === '200') {
               this.test1 = 2
+              location.reload()
               this.$router.push('/')
             } else {
               alert(res.data.msg)
@@ -179,10 +183,11 @@ export default {
           }
           this.postRequestParm('/sign_in', {
             username: this.user.username,
-            isMessage: 'email',
+            message: 'message',
             verification: this.user.verification
           }).then(res => {
             if (res.data.code === '200') {
+              location.reload()
               this.$router.push('/')
             } else if (res.data.code === '401') {
               alert('该邮箱未绑定账号，请使用账号登录')
@@ -192,6 +197,9 @@ export default {
             /* var obj = JSON.parse(data1)
             console.log(obj.code) */
           })
+           break
+        default :
+          alert('没有经费发短信')
       }
     },
     randomNum: function (min, max) {
@@ -296,10 +304,7 @@ export default {
 
 <style scoped>
   #login {
-    margin: auto;
-    margin-top: 100px;
     text-align: center;
-    width: 300px;
   }
 
   #canvas {

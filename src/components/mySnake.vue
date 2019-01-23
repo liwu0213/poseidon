@@ -44,9 +44,9 @@
 </template>
 
 <script>
-  export default {
-    name: "mySnake"
-  }
+export default {
+  name: 'mySnake'
+}
 </script>
 
 <style scoped>

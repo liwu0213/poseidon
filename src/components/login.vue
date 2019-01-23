@@ -271,6 +271,7 @@ export default {
     getValidator (value) {
       if (value === 1) {
         alert('发短信要钱的，不做这个功能')
+        return
       }
       if (value === 2) {
         this.postRequest('/public/verification', {

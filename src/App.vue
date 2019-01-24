@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header>
+      <el-header style="padding: 0px;">
         <el-menu
           class="el-menu-demo"
           mode="horizontal"
@@ -19,14 +19,16 @@
           <el-menu-item index="3">盖楼</el-menu-item>
           <el-menu-item index="3">资源共享</el-menu-item>
           <el-menu-item index="3">空间</el-menu-item>
-          <el-menu-item index="/login" v-if="userInfo.nickname==null" style="float: right">登录</el-menu-item>
-          <el-menu-item index="/index" style="float: right"  v-else>留言({{messgae}})</el-menu-item>
+          <el-menu-item index="/login" v-if="userInfo.nickname==null" style="float: right;">登录</el-menu-item>
+          <el-badge :value="messgae" :max="99" class="item" v-else style="float: right" >
+          <el-menu-item index="/index" ><i class="el-icon-bell"></i></el-menu-item>
+          </el-badge>
           <el-submenu index="3" style="float: right" v-if="userInfo.nickname!=null">
             <template slot="title">{{userInfo.nickname}}</template>
             <el-menu-item index="/goods">编辑资料</el-menu-item>
             <el-menu-item index="/logout" >登出</el-menu-item>
           </el-submenu>
-          <el-menu-item index="/login" v-else style="float: right">注册</el-menu-item>
+          <el-menu-item index="/sign_up" v-else style="float: right">注册</el-menu-item>
         </el-menu>
       </el-header>
       <el-main style="padding: 0px">
@@ -54,7 +56,7 @@ export default {
         email: null,
         imgUrl: null
       },
-      messgae: 0
+      messgae: 1
     }
   },
   components: {},
@@ -98,9 +100,11 @@ export default {
     color: #333;
     line-height: 61px;
     text-align: center;
-    padding: 0px;
   }
-
+  .item {
+    margin-top: 10px;
+    margin-right: 40px;
+  }
   .el-menu-item {
   }
 </style>

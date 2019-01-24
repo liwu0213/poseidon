@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <el-card class="box-card" style="margin: auto" v-show="test==0">
+  <div style="background-image: url('../../static/a1.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}; position: absolute;">
+  <el-card class="box-card" style="position: relative;margin: auto;top: 30%">
       <div slot="header" class="clearfix">
         <span>注册</span>
       </div>

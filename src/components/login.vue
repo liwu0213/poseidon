@@ -1,63 +1,85 @@
 <template >
   <div id="login" style="background-image: url('../../static/background_login.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}; position: absolute;">
-    <el-card class="box-card" v-show="test==0" style="width: 300px;margin:auto;position: relative; top:25%;">
-      <div slot="header" class="clearfix">
-        <span>登录</span>
-      </div>
-      <div>
-        <table>
-          <tr>
-            <td>
-              <el-tag>用户名</el-tag>
-            </td>
-            <td colspan="2">
-              <el-input v-model="user.username" @blur="drawPic"></el-input>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <el-tag>密码</el-tag>
-            </td>
-            <td colspan="2">
-              <el-input type="password" v-model="user.password" placeholder="请输入密码"></el-input>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <el-tag>验证码</el-tag>
-            </td>
-            <td>
-              <el-input v-model="user.verification"></el-input>
-            </td>
-            <td>
-              <canvas id="canvas" width="80" height="30px" @click="drawPic"></canvas>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(0)">登录</el-button>
-            </td>
-          </tr>
-        </table>
-        <div style="margin: 20px 0px;font-size: 15px;font-family: kaiti">-----------其他登录方式-----------</div>
-      </div>
-      <img src="../../static/timg.jpg" height="50px" width="60px" @click="table(1)"/>
-      <img src="../../static/timg (1).jpg" height="50px" width="50px" @click="table(2)"/>
-      <img src="../../static/timg (2).jpg" height="50px" width="50px" @click="table(3)"/>
-    </el-card>
-    <div v-show="test==1"  style="width: 300px;margin:auto">
-      <el-card class="box-card" >
+    <el-tabs type="border-card" style="width: 350px;position: relative;margin: auto;top: 30%">
+      <el-tab-pane label="账号登录">
+          <el-card class="box-card" >
+            <div slot="header" class="clearfix">
+              <span>登录</span>
+            </div>
+            <div>
+              <table>
+                <tr>
+                  <td>
+                    <el-tag>用户名</el-tag>
+                  </td>
+                  <td colspan="2">
+                    <el-input v-model="user.username" @blur="drawPic"></el-input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <el-tag>密码</el-tag>
+                  </td>
+                  <td colspan="2">
+                    <el-input type="password" v-model="user.password" placeholder="请输入密码"></el-input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <el-tag>验证码</el-tag>
+                  </td>
+                  <td>
+                    <el-input v-model="user.verification"></el-input>
+                  </td>
+                  <td>
+                    <canvas id="canvas" width="80" height="30px" @click="drawPic"></canvas>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(0)">登录</el-button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </el-card>
+      </el-tab-pane>
+      <el-tab-pane label="邮箱登录"><el-card class="box-card" >
         <div slot="header" class="clearfix">
-          <span>扣扣登录</span>
+          <span>邮箱登录</span>
         </div>
         <div>
-          qq登录未申请到开发者权限
-          敬请期待
+          <table>
+            <tr>
+              <td>
+                <el-tag>邮箱</el-tag>
+              </td>
+              <td colspan="2">
+                <el-input v-model="user.username" ></el-input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <el-tag>验证码</el-tag>
+              </td>
+              <td>
+                <el-input v-model="user.verification"></el-input>
+              </td>
+              <td>
+                <el-button style="width: 80px; " type="primary" @click="getValidator(3)">发送验证码</el-button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(1)">登录</el-button>
+              </td>
+            </tr>
+          </table>
         </div>
       </el-card>
-    </div>
-    <div v-show="test==2"  style="width: 300px;margin:auto">
-      <el-card class="box-card" >
+      </el-tab-pane>
+      <el-tab-pane label="手机号登录">
+        <el-card class="box-card" >
         <div slot="header" class="clearfix">
           <span>手机号登录</span>
         </div>
@@ -90,42 +112,17 @@
           </table>
         </div>
       </el-card>
-    </div>
-    <div v-show="test==3">
-      <el-card class="box-card"  style="width: 300px;margin:auto">
-      <div slot="header" class="clearfix">
-        <span>邮箱登录</span>
-      </div>
-      <div>
-        <table>
-          <tr>
-            <td>
-              <el-tag>邮箱</el-tag>
-            </td>
-            <td colspan="2">
-              <el-input v-model="user.username" ></el-input>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <el-tag>验证码</el-tag>
-            </td>
-            <td>
-              <el-input v-model="user.verification"></el-input>
-            </td>
-            <td>
-              <el-button style="width: 80px; " type="primary" @click="getValidator(3)">发送验证码</el-button>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <el-button style="width: 80px; margin-top: 15px" type="primary" @click="login(1)">登录</el-button>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </el-card>
-    </div>
+      </el-tab-pane>
+      <el-tab-pane label="扣扣登录"><el-card class="box-card" >
+        <div slot="header" class="clearfix">
+          <span>扣扣登录</span>
+        </div>
+        <div>
+          qq登录未申请到开发者权限
+          敬请期待
+        </div>
+      </el-card></el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 

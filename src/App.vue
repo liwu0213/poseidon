@@ -3,30 +3,30 @@
     <el-container>
       <el-header>
         <el-menu
-          :default-active="activeIndex2"
           class="el-menu-demo"
           mode="horizontal"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b" router>
           <!--<el-menu-item v-for="(menu,index) in menus" index=index ">{{menu}}</el-menu-item>-->
-          <el-menu-item index="/login" >处理中心</el-menu-item>
+          <el-menu-item index="/">首页</el-menu-item>
           <el-submenu index="2">
-            <template slot="title">我的工作台</template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
+            <template slot="title">试验田</template>
+            <el-menu-item index="/goods">商品展示</el-menu-item>
             <el-menu-item index="2-2">选项2</el-menu-item>
             <el-menu-item index="2-3">选项3</el-menu-item>
-            <el-submenu index="2-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="2-4-1">选项1</el-menu-item>
-              <el-menu-item index="2-4-2">选项2</el-menu-item>
-              <el-menu-item index="2-4-3">选项3</el-menu-item>
-            </el-submenu>
           </el-submenu>
-          <el-menu-item index="3" disabled>消息中心</el-menu-item>
-          <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
-          <el-menu-item index="5" style="float: right" >消息中心</el-menu-item>
-          <el-menu-item index="6" style="float: right" >test</el-menu-item>
+          <el-menu-item index="3">盖楼</el-menu-item>
+          <el-menu-item index="3">资源共享</el-menu-item>
+          <el-menu-item index="3">空间</el-menu-item>
+          <el-menu-item index="/login" v-if="userInfo.nickname==null" style="float: right">登录</el-menu-item>
+          <el-menu-item index="/index" style="float: right"  v-else>留言({{messgae}})</el-menu-item>
+          <el-submenu index="3" style="float: right" v-if="userInfo.nickname!=null">
+            <template slot="title">{{userInfo.nickname}}</template>
+            <el-menu-item index="/goods">编辑资料</el-menu-item>
+            <el-menu-item index="/logout" >登出</el-menu-item>
+          </el-submenu>
+          <el-menu-item index="/login" v-else style="float: right">注册</el-menu-item>
         </el-menu>
       </el-header>
       <el-main style="padding: 0px">
@@ -34,10 +34,10 @@
       </el-main>
     </el-container>
     <el-footer style="margin: 0px;text-align: center;background-color: #8c939d">
-    <span style="line-height: 50px">sss</span>
-    <span>sss</span>
-    <span>sss</span>
-    <span>sss</span>
+      <span style="line-height: 50px">sss</span>
+      <span>sss</span>
+      <span>sss</span>
+      <span>sss</span>
     </el-footer>
   </div>
 </template>
@@ -54,8 +54,7 @@ export default {
         email: null,
         imgUrl: null
       },
-      menus: ['试验田', '博客', '资源共享', '盖楼', '关于本站'],
-      mini: ['登录', '注册', '消息']
+      messgae: 0
     }
   },
   components: {},
@@ -63,7 +62,7 @@ export default {
     this.getUserInfo()
   },
   methods: {
-    getUserInfo () {
+    getUserInfo() {
       var _this = this
       this.getRequest('/poseidon/user/my_info').then(res => {
         if (res.data.code === '200') {
@@ -76,7 +75,7 @@ export default {
       })
     }
   },
-  test (index) {
+  test(index) {
     alert(index)
   }
 }
@@ -93,6 +92,7 @@ export default {
     padding-top: 0px;
     font-family: kaiti
   }
+
   .el-header {
     background-color: #B3C0D1;
     color: #333;
@@ -100,6 +100,7 @@ export default {
     text-align: center;
     padding: 0px;
   }
-  .el-menu-item{
+
+  .el-menu-item {
   }
 </style>

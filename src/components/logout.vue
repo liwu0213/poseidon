@@ -11,11 +11,18 @@ export default {
   mounted: function () {
     this.logout()
   },
+
   methods: {
     logout () {
       this.getRequest('/logout').then(res => {
         if (res.data.code === '200') {
-          alert('登出成功')
+          this.userInfo={
+            id: null,
+            nickname: null,
+            gender: null,
+            email: null,
+            imgUrl: null
+          }
         } else {
           alert(res.data.msg + ',请刷新试试')
         }

@@ -1,7 +1,6 @@
 <template >
   <div id="login" style="background-image: url('../../static/background_login.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}; position: absolute;">
-    <div style="height: 200px"></div>
-    <el-card class="box-card" v-show="test==0" style="width: 300px;margin:auto">
+    <el-card class="box-card" v-show="test==0" style="width: 300px;margin:auto;position: relative; top:25%;">
       <div slot="header" class="clearfix">
         <span>登录</span>
       </div>

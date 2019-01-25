@@ -18,7 +18,7 @@
           </el-submenu>
           <el-menu-item index="3">盖楼</el-menu-item>
           <el-menu-item index="3">资源共享</el-menu-item>
-          <el-menu-item index="3">空间</el-menu-item>
+          <el-menu-item index="/space">空间</el-menu-item>
           <el-menu-item index="/login" v-if="userInfo.nickname==null" style="float: right;">登录</el-menu-item>
           <el-badge :value="messgae" :max="99" class="item" v-else style="float: right" >
           <el-menu-item index="/index" ><i class="el-icon-bell"></i></el-menu-item>

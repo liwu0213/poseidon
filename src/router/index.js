@@ -7,10 +7,16 @@ import signUp from '../components/signUp'
 import test from '../components/test'
 import goods from '../components/goods'
 import logout from '../components/logout'
+import space from '../components/space'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/space',
+      name: 'space',
+      component: space
+    },
     {
       path: '/login',
       name: 'login',

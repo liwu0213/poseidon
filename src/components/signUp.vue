@@ -1,54 +1,41 @@
 <template>
-  <div style="background-image: url('../../static/a1.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}; position: absolute;">
-    <div style="background-color: white;width: 500px;padding: 10px">
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="活动名称" prop="name">
-        <el-input v-model="ruleForm.name"></el-input>
-      </el-form-item>
-      <el-form-item label="活动区域" prop="region">
-        <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="活动时间" required>
-        <el-col :span="11">
-          <el-form-item prop="date1">
-            <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-          </el-form-item>
-        </el-col>
-        <el-col class="line" :span="2">-</el-col>
-        <el-col :span="11">
-          <el-form-item prop="date2">
-            <el-time-picker type="fixed-time" placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-          </el-form-item>
-        </el-col>
-      </el-form-item>
-      <el-form-item label="即时配送" prop="delivery">
-        <el-switch v-model="ruleForm.delivery"></el-switch>
-      </el-form-item>
-      <el-form-item label="活动性质" prop="type">
-        <el-checkbox-group v-model="ruleForm.type">
-          <el-checkbox label="美食/餐厅线上活动" name="type"></el-checkbox>
-          <el-checkbox label="地推活动" name="type"></el-checkbox>
-          <el-checkbox label="线下主题活动" name="type"></el-checkbox>
-          <el-checkbox label="单纯品牌曝光" name="type"></el-checkbox>
-        </el-checkbox-group>
-      </el-form-item>
-      <el-form-item label="特殊资源" prop="resource">
-        <el-radio-group v-model="ruleForm.resource">
-          <el-radio label="线上品牌商赞助"></el-radio>
-          <el-radio label="线下场地免费"></el-radio>
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item label="活动形式" prop="desc">
-        <el-input type="textarea" v-model="ruleForm.desc"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
-      </el-form-item>
-    </el-form>
+  <div
+    style="background-image: url('../../static/a1.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}; position: absolute;">
+    <div style="background-color: white;width: 400px;padding: 10px;margin:200px auto 0px">
+      <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
+        <el-form-item label="用户名" prop="username" hide-required-asterisk=true>
+          <el-input v-model="ruleForm2.username" placeholder="输入用户名"></el-input>
+        </el-form-item>
+        <el-form-item label="昵称" prop="nickname" hide-required-asterisk=true>
+          <el-input v-model="ruleForm2.nickname" placeholder="输入昵称"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="pass">
+          <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码" prop="checkPass" hide-required-asterisk=true>
+          <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="生日">
+          <el-col :span="11">
+            <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm2.birthday"
+                            style="width: 100%;"></el-date-picker>
+          </el-col>
+        </el-form-item>
+        <el-form-item prop="email" label="邮箱"
+                      :rules="[{ required: false},{ type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }]">
+          <el-input v-model="ruleForm2.email"></el-input>
+        </el-form-item>
+        <el-form-item label="性别" style="width: 260px;margin-bottom: 30px">
+          <el-radio-group v-model="ruleForm2.gender" size="medium">
+            <el-radio border label="男"></el-radio>
+            <el-radio border label="女"></el-radio>
+          </el-radio-group>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
+          <el-button @click="resetForm('ruleForm2')">重置</el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -56,136 +43,98 @@
 <script>/* eslint-disable indent */
 export default {
   name: 'signUp',
-  data () {
+  data: function () {
+    var checkAge = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('用户名不能为空'))
+      }
+      var uPattern = /^[a-zA-Z0-9_-]{4,16}$/
+      if (!uPattern.test(value)) {
+        callback(new Error('请输入4到16位（字母，数字，下划线，减号）'))
+      } else {
+        callback()
+      }
+    }
+    var checkNike = (rule, value, callback) => {
+      if (value.length < 3 || value.length > 16) {
+        callback(new Error('请输入3到16位字符'))
+      } else {
+        callback()
+      }
+    }
+    var validatePass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入密码'))
+      } else {
+        var uPattern = /^[a-zA-Z0-9_-]{6,16}$/
+        if (!uPattern.test(value)) {
+          callback(new Error('请输入6到16位（字母，数字，下划线，减号）'))
+        }
+        if (this.ruleForm2.checkPass !== '') {
+          this.$refs.ruleForm2.validateField('checkPass')
+        }
+        callback()
+      }
+    }
+    var validatePass2 = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请再次输入密码'))
+      } else if (value !== this.ruleForm2.pass) {
+        callback(new Error('两次输入密码不一致!'))
+      } else {
+        callback()
+      }
+    }
     return {
-      user: {
-        username: null,
-        email: null,
-        verification: null,
-        nickname: null,
-        password: null,
-        gender: null
+      ruleForm2: {
+        username: '',
+        pass: '',
+        checkPass: '',
+        birthday: '',
+        email: '',
+        gender: '',
+        nickname: ''
       },
-      test: 0,
-      ruleForm: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
-      rules: {
-        name: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+      rules2: {
+        pass: [
+          {required: true},
+          {validator: validatePass, trigger: 'blur'}
         ],
-        region: [
-          { required: true, message: '请选择活动区域', trigger: 'change' }
+        checkPass: [
+          {required: true},
+          {validator: validatePass2, trigger: 'blur'}
         ],
-        date1: [
-          { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+        username: [
+          {required: true},
+          {validator: checkAge, trigger: 'blur'}
         ],
-        date2: [
-          { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
-        ],
-        type: [
-          { type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }
-        ],
-        resource: [
-          { required: true, message: '请选择活动资源', trigger: 'change' }
-        ],
-        desc: [
-          { required: true, message: '请填写活动形式', trigger: 'blur' }
+        nickname: [
+          {required: true},
+          {validator: checkNike, trigger: 'blur'}
         ]
       }
     }
   },
   methods: {
-    randomNum: function (min, max) {
-      return Math.floor(Math.random() * (max - min) + min)
-    },
-    // 生成随机颜色RGB分量
-    randomColor: function (min, max) {
-      var _r = this.randomNum(min, max)
-      var _g = this.randomNum(min, max)
-      var _b = this.randomNum(min, max)
-      return 'rgb(' + _r + ',' + _g + ',' + _b + ')'
-    },
-    drawPic: function () {
-      if (this.user.username === null || this.user.username === '') {
-        alert('请输入用户名')
-        return
-      }
-      // 获取到元素canvas
-      var $canvas = document.getElementById('canvas')
-      // var _picTxt = document.getElementById('canvas').innerHTML// 随机数
-      var value = null
-      this.postRequest('/public/verification', {
-        username: this.user.username,
-        code: 1
-      }).then(res => {
-        value = res.data.data
-        var _num = 4// 4个随机数字
-        var _width = $canvas.width
-        var _height = $canvas.height
-        var ctx = $canvas.getContext('2d')// 获取 context 对象
-        ctx.textBaseline = 'bottom'// 文字上下对齐方式--底部对齐
-        ctx.fillStyle = this.randomColor(180, 240)// 填充画布颜色
-        ctx.fillRect(0, 0, _width, _height)// 填充矩形--画画
-        for (var i = 0; i < _num; i++) {
-          var number = value.charAt(i)
-          var x = (_width - 10) / _num * i + 10
-          var y = _height - 6
-          var deg = this.randomNum(-30, 30)
-          ctx.fillStyle = this.randomColor(10, 100)// 填充随机颜色
-          ctx.font = this.randomNum(20, 30) + 'px SimHei'// 设置随机数大小，字体为SimHei
-          ctx.translate(x, y)// 将当前xy坐标作为原始坐标
-          ctx.rotate(deg * Math.PI / 180)// 旋转随机角度
-          ctx.fillText(number, 0, 0)// 绘制填色的文本
-          ctx.rotate(-deg * Math.PI / 180)
-          ctx.translate(-x, -y)
-        }
-        for (var i = 0; i < _num; i++) {
-          // 定义笔触颜色
-          ctx.strokeStyle = this.randomColor(90, 180)
-          ctx.beginPath()
-          // 随机划线--4条路径
-          ctx.moveTo(this.randomNum(0, _width), this.randomNum(0, _height))
-          ctx.lineTo(this.randomNum(0, _width), this.randomNum(0, _height))
-          ctx.stroke()
-        }
-        for (var i = 0; i < _num * 10; i++) {
-          ctx.fillStyle = this.randomColor(0, 255)
-          ctx.beginPath()
-          // 随机画原，填充颜色
-          ctx.arc(this.randomNum(0, _width), this.randomNum(0, _height), 1, 0, 2 * Math.PI)
-          ctx.fill()
-        }
-        return value// 返回随机数字符串
-      })
-    },
     sign () {
-      if (this.user.username === null || this.user.password === null || this.user.nickname === null) {
-        alert('请填写必填字段')
-        return
+      var genders = -1
+      if (this.ruleForm2.gender === null) {
+        genders = -1
+      } else if (this.ruleForm2.gender === '男') {
+        genders = 1
+      } else {
+        genders = 0
       }
-      var reg = new RegExp('^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$')
-      if (this.user.email != '' && this.user.email != null && !reg.test(this.user.email)) {
-        alert('邮箱格式错误！')
-        return
-      }
-      this.postRequest('/sign_up?verification=' + this.user.verification, {
-        username: this.user.username,
-        email: this.user.email,
-        nickname: this.user.nickname,
-        password: this.user.password,
-        gender: this.user.gender
+      this.postRequest('/sign_up', {
+        username: this.ruleForm2.username,
+        email: this.ruleForm2.email,
+        nickname: this.ruleForm2.nickname,
+        password: this.ruleForm2.pass,
+        birthday: this.ruleForm2.birthday,
+        gender: genders
       }).then(res => {
         if (res.data.code === '200') {
-          this.test = 1
+          this.$router.push('/space')
         } else {
           alert(res.data.msg)
         }
@@ -193,18 +142,11 @@ export default {
         console.log(obj.code) */
       })
     },
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit!');
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
+    submitForm (formName) {
+      this.sign()
     },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
+    resetForm (formName) {
+      this.$refs[formName].resetFields()
     }
   }
 }

@@ -20,9 +20,7 @@
           <el-menu-item index="3">资源共享</el-menu-item>
           <el-menu-item index="/space">空间</el-menu-item>
           <el-menu-item index="/login" v-if="userInfo.nickname==null" style="float: right;">登录</el-menu-item>
-          <el-badge :value="messgae" :max="99" class="item" v-else style="float: right" >
-          <el-menu-item index="/index" ><i class="el-icon-bell"></i></el-menu-item>
-          </el-badge>
+          <el-menu-item index="/index" v-else style="float: right"><i class="el-icon-bell" ></i></el-menu-item>
           <el-submenu index="3" style="float: right" v-if="userInfo.nickname!=null">
             <template slot="title">{{userInfo.nickname}}</template>
             <el-menu-item index="/goods">编辑资料</el-menu-item>
@@ -64,21 +62,17 @@ export default {
     this.getUserInfo()
   },
   methods: {
-    getUserInfo() {
+    getUserInfo () {
       var _this = this
       this.getRequest('/poseidon/user/my_info').then(res => {
         if (res.data.code === '200') {
           _this.userInfo = res.data.data
-          console.log(_this.userInfo)
         } else {
         }
         /* var obj = JSON.parse(data1)
         console.log(obj.code) */
       })
     }
-  },
-  test(index) {
-    alert(index)
   }
 }
 </script>

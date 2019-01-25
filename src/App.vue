@@ -16,8 +16,8 @@
             <el-menu-item index="2-2">选项2</el-menu-item>
             <el-menu-item index="2-3">选项3</el-menu-item>
           </el-submenu>
-          <el-menu-item index="3">盖楼</el-menu-item>
-          <el-menu-item index="3">资源共享</el-menu-item>
+          <el-menu-item index="/forum">盖楼</el-menu-item>
+          <el-menu-item index="/mysource">资源共享</el-menu-item>
           <el-menu-item index="/space">空间</el-menu-item>
           <el-menu-item index="/login" v-if="userInfo.nickname==null" style="float: right;">登录</el-menu-item>
           <el-menu-item index="/index" v-else style="float: right"><i class="el-icon-bell" ></i></el-menu-item>

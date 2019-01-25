@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="border-width: 20px">
     <div  v-for="(item,index) in items">
       {{item}} {{index}}
     </div>

@@ -5,9 +5,11 @@ import home from '../components/home'
 import admin from '@/components/admin'
 import signUp from '../components/signUp'
 import test from '../components/test'
-import goods from '../components/goods'
+import goods from '../components/area/goods/goods'
 import logout from '../components/logout'
-import space from '../components/space'
+import space from '../components/space/space'
+import forum from '../components/forum/forum'
+import mysource from '../components/mysource/mysource'
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +18,11 @@ export default new Router({
       path: '/space',
       name: 'space',
       component: space
+    },
+    {
+      path: '/mysource',
+      name: 'mysource',
+      component: mysource
     },
     {
       path: '/login',
@@ -46,6 +53,11 @@ export default new Router({
       path: '/logout',
       name: 'logout',
       component: logout
+    },
+    {
+      path: '/forum',
+      name: 'forum',
+      component: forum
     },
     {
       path: '/test',

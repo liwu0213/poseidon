@@ -1,23 +1,27 @@
 <template>
-  <div id="home">
+  <div id="home" style="font-size: 30px">
     <el-row  type="flex" justify="center">
     <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
       泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
     </el-col>
     </el-row>
     <el-row  type="flex" justify="center">
-      <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
-        泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
+      <el-col :span="24" style="background-image: url('../../static/timg3.jpg' );color: black; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
+        网站功能:<br>1.电商项目试验与展示<br>2.盖楼、留言<br>3.博客、文章分享<br>4.资源分享
       </el-col>
     </el-row>
     <el-row  type="flex" justify="center">
       <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
-        泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
+        版主信息<br>扣扣：1977339740<br>加好友送个锤子
       </el-col>
     </el-row>
     <el-row  type="flex" justify="center">
-      <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
-        泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
+      <el-col :span="24" style="background-image:  url('../../static/test5.jpg' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
+        <el-button type="primary" round style="font-size: 25px">网站建议</el-button>
+        <br><br>
+        <el-button type="primary" round style="font-size: 25px" @click.stop="snake">玩蛇</el-button>
+        <br><br>
+        <a href="#home" style="color: white">去顶部</a>
       </el-col>
     </el-row>
     <!--<h1
@@ -31,11 +35,7 @@
       版主信息<br>扣扣：1977339740<br>加好友送个锤子</h1>
     <h1
       style="background-image: url('../../static/test5.jpg' ) ;height: 400px;color: white; margin: 0px;padding-top: 200px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;">
-      <el-button type="primary" round style="font-size: 25px">网站建议</el-button>
-      <br><br>
-      <el-button type="primary" round style="font-size: 25px" @click.stop="snake">玩蛇</el-button>
-      <br><br>
-      <a href="#home" style="color: white">去顶部</a></h1>-->
+      </h1>-->
     <el-dialog title="贪吃蛇" :visible.sync="dialogTableVisible" center :append-to-body='true' :lock-scroll="false"
                width="30%">
       <my-snake></my-snake>

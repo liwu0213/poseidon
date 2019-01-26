@@ -1,10 +1,10 @@
 <template>
   <div >
-    <el-container s>
-    <el-aside  style="background-color: rgb(238, 241, 246);height: 800px;" :width="value">
+    <el-container >
+    <el-aside  style="background-color: rgb(238, 241, 246);" :width="value">
     <el-menu :default-openeds="[]" :collapse="test" style="background-color: rgb(238, 241, 246)">
       <el-submenu index="1">
-        <template slot="title"><i class="el-icon-message"></i>导航一</template>
+        <template slot="title"><i class="el-icon-message"></i> 导航一</template>
         <el-menu-item-group>
           <!--<template slot="title">分组一</template>-->
           <el-menu-item index="1-1" @click="test">好友</el-menu-item>
@@ -19,7 +19,7 @@
         </el-submenu>
       </el-submenu>
       <el-submenu index="2">
-        <template slot="title"><i class="el-icon-menu"></i>导航二</template>
+        <template slot="title"><i class="el-icon-menu"></i> 导航二</template>
         <el-menu-item-group>
           <template slot="title">分组一</template>
           <el-menu-item index="2-1">选项1</el-menu-item>
@@ -34,7 +34,7 @@
         </el-submenu>
       </el-submenu>
       <el-submenu index="3">
-        <template slot="title"><i class="el-icon-setting"></i>导航三</template>
+        <template slot="title"><i class="el-icon-setting"></i> 导航三</template>
         <el-menu-item-group>
           <template slot="title">分组一</template>
           <el-menu-item index="3-1">选项1</el-menu-item>
@@ -75,7 +75,7 @@ export default {
   mounted: function () {
     let w = document.documentElement.offsetWidth || document.body.offsetWidth
     if (w < 1000) {
-      this.value = '100px'
+      this.value = '50px'
       this.open = true
     }
     this.getUserInfo()

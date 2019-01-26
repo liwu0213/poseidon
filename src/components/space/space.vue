@@ -1,8 +1,8 @@
 <template>
   <div >
     <el-container s>
-    <el-aside width="200px"  style="background-color: rgb(238, 241, 246);height: 800px;">
-    <el-menu :default-openeds="[]">
+    <el-aside  style="background-color: rgb(238, 241, 246);height: 800px;" :width="value">
+    <el-menu :default-openeds="[]" :collapse="test" style="background-color: rgb(238, 241, 246)">
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>导航一</template>
         <el-menu-item-group>
@@ -66,14 +66,21 @@ export default {
     userMessage
   },
   data () {
-    return{
-      test: 1
+    return {
+      test: 1,
+      open: false,
+      value: '300px'
     }
   },
-  methods: {
-    test () {
-      alert('sss')
+  mounted: function () {
+    let w = document.documentElement.offsetWidth || document.body.offsetWidth
+    if (w < 1000) {
+      this.value = '100px'
+      this.open = true
     }
+    this.getUserInfo()
+  },
+  methods: {
   }
 }
 </script>

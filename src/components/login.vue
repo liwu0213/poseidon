@@ -1,6 +1,6 @@
 <template >
   <div id="login" style="background-image: url('../../static/background_login.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;};height: 700px">
-    <el-tabs type="border-card" style="width: 350px;position: relative;margin: auto;top: 30%">
+    <el-tabs type="border-card" style="width: 300px;position: relative;margin: auto;top: 30%">
       <el-tab-pane label="账号登录">
           <el-card class="box-card" >
             <div slot="header" class="clearfix">

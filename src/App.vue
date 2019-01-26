@@ -29,7 +29,7 @@
           <el-menu-item index="/sign_up" v-else style="float: right">注册</el-menu-item>
         </el-menu>
       </el-header>
-      <el-main>
+      <el-main style="padding: 0px">
       <router-view/>
       </el-main>
       <el-footer style="margin: 0px;text-align: center;background-color: #8c939d">

@@ -1,7 +1,27 @@
 <template>
   <div id="home">
-    <h1
-      style="background-image: url('../../static/test1.png' );height: 500px;padding-top: 300px;color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;">
+    <el-row  type="flex" justify="center">
+    <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
+      泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
+    </el-col>
+    </el-row>
+    <el-row  type="flex" justify="center">
+      <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
+        泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
+      </el-col>
+    </el-row>
+    <el-row  type="flex" justify="center">
+      <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
+        泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
+      </el-col>
+    </el-row>
+    <el-row  type="flex" justify="center">
+      <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
+        泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
+      </el-col>
+    </el-row>
+    <!--<h1
+      style="background-image: url('../../static/test1.png' );padding-top: 10%;color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;" >
       泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI</h1>
     <h1
       style="background-image: url('../../static/timg3.jpg' );height: 500px;padding-top: 300px;color: black; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;">
@@ -15,7 +35,7 @@
       <br><br>
       <el-button type="primary" round style="font-size: 25px" @click.stop="snake">玩蛇</el-button>
       <br><br>
-      <a href="#home" style="color: white">去顶部</a></h1>
+      <a href="#home" style="color: white">去顶部</a></h1>-->
     <el-dialog title="贪吃蛇" :visible.sync="dialogTableVisible" center :append-to-body='true' :lock-scroll="false"
                width="30%">
       <my-snake></my-snake>
@@ -33,7 +53,14 @@ export default {
   name: 'home',
   data () {
     return {
+      value: '500px',
       dialogTableVisible: false
+    }
+  },
+  mounted: function () {
+    let w = document.documentElement.offsetWidth || document.body.offsetWidth
+    if (w < 800) {
+      this.value = '300px'
     }
   },
   methods: {

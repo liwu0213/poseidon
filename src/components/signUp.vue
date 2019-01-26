@@ -1,6 +1,6 @@
 <template>
-  <div style="background-image: url('../../static/a1.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}; position: absolute;">
-    <div style="background-color: #bbbbbb;width: 350px;padding: 15px ;margin:200px auto 0px">
+  <div style="background-image: url('../../static/a1.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;};height: 700px">
+    <div style="background-color: #bbbbbb;width: 350px;position: relative;margin: auto;top: 20%;padding: 10px 20px">
       <div style="border-bottom: 2px solid #3aa4e6;margin: 15px 0px;padding-bottom: 10px ">注册</div>
       <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm" >
         <el-form-item label="用户名" prop="username" hide-required-asterisk=true>

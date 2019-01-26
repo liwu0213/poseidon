@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header style="padding: 0px;">
+      <el-header style="padding: 0px;" :height="value">
         <el-menu
           class="el-menu-demo"
           mode="horizontal"
@@ -54,14 +54,15 @@ export default {
         email: null,
         imgUrl: null
       },
-      messgae: 1
+      messgae: 1,
+      value: '60px'
     }
   },
   components: {},
   mounted: function () {
-    let w = document.documentElement.offsetWidth || document.body.offsetWidth;
-    if(w < 1000){
-      this.show = false;
+    let w = document.documentElement.offsetWidth || document.body.offsetWidth
+    if (w < 600) {
+      this.value = '120px'
     }
     this.getUserInfo()
   },

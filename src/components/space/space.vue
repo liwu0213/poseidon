@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <el-container>
-    <el-aside width="200px"  style="background-color: rgb(238, 241, 246);height: 800px">
+  <div >
+    <el-container s>
+    <el-aside width="200px"  style="background-color: rgb(238, 241, 246);height: 800px;">
     <el-menu :default-openeds="[]">
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>导航一</template>
@@ -54,6 +54,7 @@
         <user-message v-show="test===1" ref="userMessage"/>
       </el-main>
     </el-container>
+    <!--<div style="clear: both"></div>-->
   </div>
 </template>
 

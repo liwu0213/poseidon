@@ -2,12 +2,12 @@
   <div>
     <el-container>
     <el-aside width="200px"  style="background-color: rgb(238, 241, 246);height: 800px">
-    <el-menu :default-openeds="['1', '3']">
+    <el-menu :default-openeds="[]">
       <el-submenu index="1">
         <template slot="title"><i class="el-icon-message"></i>导航一</template>
         <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
+          <!--<template slot="title">分组一</template>-->
+          <el-menu-item index="1-1" @click="test">好友</el-menu-item>
           <el-menu-item index="1-2">选项2</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="分组2">
@@ -51,22 +51,29 @@
     </el-menu>
   </el-aside>
       <el-main>
-        <el-table :data="tableData">
-          <el-table-column prop="date" label="日期" width="140">
-          </el-table-column>
-          <el-table-column prop="name" label="姓名" width="120">
-          </el-table-column>
-          <el-table-column prop="address" label="地址">
-          </el-table-column>
-        </el-table>
+        <user-message v-show="test===1" ref="userMessage"/>
       </el-main>
     </el-container>
   </div>
 </template>
 
 <script>/* eslint-disable indent */
+import userMessage from './userMessage'
 export default {
-  name: 'space'
+  name: 'space',
+  components: {
+    userMessage
+  },
+  data () {
+    return{
+      test: 1
+    }
+  },
+  methods: {
+    test () {
+      alert('sss')
+    }
+  }
 }
 </script>
 

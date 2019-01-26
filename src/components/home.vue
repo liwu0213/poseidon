@@ -15,7 +15,7 @@
       <br><br>
       <el-button type="primary" round style="font-size: 25px" @click.stop="snake">玩蛇</el-button>
       <br><br>
-      <a href="#a" style="color: white">去顶部</a></h1>
+      <a href="#home" style="color: white">去顶部</a></h1>
     <el-dialog title="贪吃蛇" :visible.sync="dialogTableVisible" center :append-to-body='true' :lock-scroll="false"
                width="30%">
       <my-snake></my-snake>

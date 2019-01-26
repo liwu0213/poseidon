@@ -29,16 +29,16 @@
           <el-menu-item index="/sign_up" v-else style="float: right">注册</el-menu-item>
         </el-menu>
       </el-header>
-      <el-main style="padding: 0px">
-        <router-view/>
+      <el-main>
+      <router-view/>
       </el-main>
+      <el-footer style="margin: 0px;text-align: center;background-color: #8c939d">
+        <span style="line-height: 50px">sss</span>
+        <span>sss</span>
+        <span>sss</span>
+        <span>sss</span>
+      </el-footer>
     </el-container>
-    <el-footer style="margin: 0px;text-align: center;background-color: #8c939d">
-      <span style="line-height: 50px">sss</span>
-      <span>sss</span>
-      <span>sss</span>
-      <span>sss</span>
-    </el-footer>
   </div>
 </template>
 
@@ -59,6 +59,10 @@ export default {
   },
   components: {},
   mounted: function () {
+    let w = document.documentElement.offsetWidth || document.body.offsetWidth;
+    if(w < 1000){
+      this.show = false;
+    }
     this.getUserInfo()
   },
   methods: {

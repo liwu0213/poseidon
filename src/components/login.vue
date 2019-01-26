@@ -1,5 +1,5 @@
 <template >
-  <div id="login" style="background-image: url('../../static/background_login.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;}; position: absolute;">
+  <div id="login" style="background-image: url('../../static/background_login.jpg');margin: 0px;padding: 0px;width: 100%; height: 100%;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;};height: 700px">
     <el-tabs type="border-card" style="width: 350px;position: relative;margin: auto;top: 30%">
       <el-tab-pane label="账号登录">
           <el-card class="box-card" >
@@ -232,10 +232,10 @@ export default {
         for (var i = 0; i < _num; i++) {
           var number = value.charAt(i)
           var x = (_width - 10) / _num * i + 10
-          var y = _height - 6
-          var deg = this.randomNum(-30, 30)
+          var y = _height - 1
+          var deg = this.randomNum(-25, 25)
           ctx.fillStyle = this.randomColor(10, 100)// 填充随机颜色
-          ctx.font = this.randomNum(20, 30) + 'px SimHei'// 设置随机数大小，字体为SimHei
+          ctx.font = this.randomNum(30, 30) + 'px SimHei'// 设置随机数大小，字体为SimHei
           ctx.translate(x, y)// 将当前xy坐标作为原始坐标
           ctx.rotate(deg * Math.PI / 180)// 旋转随机角度
           ctx.fillText(number, 0, 0)// 绘制填色的文本

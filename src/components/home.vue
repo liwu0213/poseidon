@@ -2,17 +2,23 @@
   <div id="home" style="font-size: 30px">
     <el-row  type="flex" justify="center">
     <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
-      泥猴！<br>这是一个毫无目的的网站<br>第一次建站，也不晓得整个啥子首页好，凑合着看<br>高价收购二手UI
+      网站目前仅支持注册登录，在未来1.0 版本中会完善登录授权，权限管控，资源上传，和留言功能<br>
+      如果你有什么好的意见或者建议也可以在网站底部留言，小的感激不尽
     </el-col>
     </el-row>
     <el-row  type="flex" justify="center">
       <el-col :span="24" style="background-image: url('../../static/timg3.jpg' );color: black; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
-        网站功能:<br>1.电商项目试验与展示<br>2.盖楼、留言<br>3.博客、文章分享<br>4.资源分享
+       网站功能前瞻：目前受限于资金问题，服务器带宽过低导致静态资源加载缓慢，在不久的将来会做服务器升级，敬请期待;<br>
+        由于版主只能业余抽出时间开发，所以网站开发进度会很慢，请耐心，多给与一点时间去等待;<br>
+        网站计划功能：1.聊天室  2.资源共享，3.项目实验，4.加好友，5.发表博客，6.小游戏
       </el-col>
     </el-row>
     <el-row  type="flex" justify="center">
       <el-col :span="24" style="background-image: url('../../static/test1.png' );color: white; margin: 0px;background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;height: auto;padding: 20% 0px " >
-        版主信息<br>扣扣：1977339740<br>加好友送个锤子
+        该网页使用或计划使用的相关技术：<br>
+        后端：java springboot2.0.6, hibernate-validator,quartz,Spring-data-jpa,websocket,springSecurity,logback<br>
+        中间件：rabbitMQ,mysql,nginx,redis<br>
+        前端：element-ui,vue;<br>
       </el-col>
     </el-row>
     <el-row  type="flex" justify="center">

@@ -72,7 +72,7 @@
 																		<Font size="16.0" />
 																	</font>
 																</TextField>
-																<TextField fx:id="txtServiceName" text="I{c}Service" GridPane.columnIndex="3" GridPane.rowIndex="3">
+																<TextField fx:id="txtServiceName" text="{c}Service" GridPane.columnIndex="3" GridPane.rowIndex="3">
 																	<font>
 																		<Font size="16.0" />
 																	</font>
@@ -173,32 +173,32 @@
 																		<Insets right="3.0" />
 																	</GridPane.margin>
 																</Label>-->
-																<!--<TextField fx:id="txtBeanPackage" text="cn.shencom.server.entity.in" GridPane.columnIndex="1" GridPane.rowIndex="6">
+																<!--<TextField fx:id="txtBeanPackage" text="com.muggle.server.entity.in" GridPane.columnIndex="1" GridPane.rowIndex="6">
 																	<font>
 																		<Font size="16.0" />
 																	</font>
 																</TextField>-->
-																<TextField fx:id="txtEntityPackage" text="cn.shencom.model" GridPane.columnIndex="1" GridPane.rowIndex="2">
+																<TextField fx:id="txtEntityPackage" text="com.muggle.entity" GridPane.columnIndex="1" GridPane.rowIndex="2">
 																	<font>
 																		<Font size="16.0" />
 																	</font>
 																</TextField>
-																<TextField fx:id="txtServicePackage" text="cn.shencom.server.service" GridPane.columnIndex="1" GridPane.rowIndex="3">
+																<TextField fx:id="txtServicePackage" text="com.muggle.service" GridPane.columnIndex="1" GridPane.rowIndex="3">
 																	<font>
 																		<Font size="16.0" />
 																	</font>
 																</TextField>
-																<TextField fx:id="txtServiceImplPackage" text="cn.shencom.server.service.impl" GridPane.columnIndex="1" GridPane.rowIndex="4">
+																<TextField fx:id="txtServiceImplPackage" text="com.muggle.service.impl" GridPane.columnIndex="1" GridPane.rowIndex="4">
 																	<font>
 																		<Font size="16.0" />
 																	</font>
 																</TextField>
-																<TextField fx:id="txtRouterPackage" text="cn.shencom.server.controller" GridPane.columnIndex="1" GridPane.rowIndex="6">
+																<TextField fx:id="txtRouterPackage" text="com.muggle.controller" GridPane.columnIndex="1" GridPane.rowIndex="6">
 																	<font>
 																		<Font size="16.0" />
 																	</font>
 																</TextField>
-																<TextField fx:id="txtSqlPackage" text="cn.shencom.repos" GridPane.columnIndex="1" GridPane.rowIndex="5">
+																<TextField fx:id="txtSqlPackage" text="com.muggle.repos" GridPane.columnIndex="1" GridPane.rowIndex="5">
 																	<font>
 																		<Font size="16.0" />
 																	</font>

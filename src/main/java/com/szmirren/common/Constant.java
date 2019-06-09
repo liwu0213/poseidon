@@ -32,22 +32,22 @@ public interface Constant {
 	String TEMPLATE_DIR_REFRESH = "刷新模板文件夹";
 	/** 实体类模板的默认名字 */
 //	String TEMPLATE_NAME_ENTITY = "Entity.ftl";
-	String TEMPLATE_NAME_ENTITY = "ScEntity.ftl";
+	String TEMPLATE_NAME_ENTITY = "MyEntity.ftl";
 	/** Bean实体类模板的默认名字 */
 //	String TEMPLATE_NAME_ENTITY = "Entity.ftl";
-	String TEMPLATE_NAME_BEAN = "ScBean.ftl";
+	String TEMPLATE_NAME_BEAN = "MyBean.ftl";
 	/** Service模板的默认名字 */
 //	String TEMPLATE_NAME_SERVICE = "Service.ftl";
-	String TEMPLATE_NAME_SERVICE = "ScService.ftl";
+	String TEMPLATE_NAME_SERVICE = "MyService.ftl";
 	/** ServiceImpl模板的默认名字 */
 //	String TEMPLATE_NAME_SERVICE_IMPL = "ServiceImpl.ftl";
-	String TEMPLATE_NAME_SERVICE_IMPL = "ScServiceImpl.ftl";
+	String TEMPLATE_NAME_SERVICE_IMPL = "MyServiceImpl.ftl";
 	/** Controller模板的默认名字 */
 //	String TEMPLATE_NAME_ROUTER = "Controller.ftl";
-	String TEMPLATE_NAME_ROUTER = "ScController.ftl";
+	String TEMPLATE_NAME_ROUTER = "MyController.ftl";
 	/** Dao模板的默认名字 */
 //	String TEMPLATE_NAME_DAO = "Dao.ftl";
-	String TEMPLATE_NAME_DAO = "ScRepository.ftl";
+	String TEMPLATE_NAME_DAO = "MyRepository.ftl";
 	/** Mapper模板的默认名字 */
 	String TEMPLATE_NAME_MAPPER = Main.LANGUAGE.get(LanguageKey.SET_ABSTRACT_AUTOMATIC).get();
 	/** Mapper模板的默认名字 */
